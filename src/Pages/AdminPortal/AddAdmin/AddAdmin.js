@@ -1,26 +1,26 @@
 import { Box, Button, Input, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 
-const AddStaff = () => {
+const AddAdmin = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [image, setImage] = useState(null);
-  console.log(name, email, id);
+  console.log(name, email);
 
-  const addStaff = (e) => {
+  const addAdmin = (e) => {
     e.preventDefault();
     if (!image && name && email) {
       return;
     }
     if (id.length < 6) {
-      return alert("Id should be six character");
+      return alert("Admin Id must be of greater then 6 characters");
     }
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
     formData.append("image", image);
-    formData.append("role", "staff");
+    formData.append("role", "admin");
     formData.append("personId", id);
 
     fetch("http://localhost:8000/users", {
@@ -31,10 +31,10 @@ const AddStaff = () => {
       .then((data) => {
         data.error && alert(data.error);
         if (data.insertedId) {
-          alert("Staff added successfully");
           setName("");
           setEmail("");
           setId("");
+          alert("Admin added successfully");
         }
       })
       .catch((error) => {
@@ -44,15 +44,15 @@ const AddStaff = () => {
   return (
     <Box sx={{ mx: 2 }}>
       <Typography sx={{ my: 3 }} variant="h2">
-        Add a Staff
+        Add New Admin
       </Typography>
-      <form onSubmit={addStaff}>
+      <form onSubmit={addAdmin}>
         <TextField
           fullWidth
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          label="Staff Name"
+          label="Admin Name"
         />
         <TextField
           fullWidth
@@ -60,32 +60,33 @@ const AddStaff = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
-          label="Staff Email"
+          label="Admin Email"
           margin="dense"
         />
-
         <TextField
           fullWidth
           required
           value={id}
           onChange={(e) => setId(e.target.value)}
           type="number"
-          label="Staff Id"
+          label="Admin Id"
           margin="dense"
         />
 
         <Input
+          id="image"
           onChange={(e) => setImage(e.target.files[0])}
           accept="image/*"
           type="file"
           sx={{ my: 2 }}
         />
+
         <Button type="submit" variant="contained">
-          Add Staff
+          Add Admin
         </Button>
       </form>
     </Box>
   );
 };
 
-export default AddStaff;
+export default AddAdmin;

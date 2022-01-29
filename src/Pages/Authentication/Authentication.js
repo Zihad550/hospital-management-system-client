@@ -15,18 +15,17 @@ const Authentication = () => {
   const handleVerify = (e) => {
     e.preventDefault();
     fetch(
-      `http://localhost:8000/users?id=${data?.personId}&&role=${data?.role}`
+      `http://localhost:8000/users/user?id=${data?.personId}&&role=${data?.role}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setUser(data[0]);
-        console.log(data[0]);
-        localStorage.setItem("id", JSON.stringify(data[0].personId));
-        localStorage.setItem("role", JSON.stringify(data[0].role));
-        data[0].role === "admin" && navigate("/adminDashboard");
-        data[0].role === "staff" && navigate(`/staffDashboard`);
-        data[0].role === "doctor" && navigate("/doctorDashboard");
-        setUser(data[0]);
+        setUser(data);
+        localStorage.setItem("id", JSON.stringify(data.personId));
+        localStorage.setItem("role", JSON.stringify(data.role));
+        data.role === "admin" && navigate("/adminDashboard");
+        data.role === "staff" && navigate(`/staffDashboard`);
+        data.role === "doctor" && navigate("/doctorDashboard");
+        setUser(data);
       });
   };
 
@@ -42,14 +41,13 @@ const Authentication = () => {
 
   useEffect(() => {
     if (id && role) {
-      fetch(`http://localhost:8000/users?id=${id}&&role=${role}`)
+      fetch(`http://localhost:8000/users/user?id=${id}&&role=${role}`)
         .then((res) => res.json())
         .then((data) => {
-          data[0].role === "admin" && navigate("/adminDashboard");
-          data[0].role === "staff" && navigate(`/staffDashboard`);
-          data[0].role === "doctor" && navigate("/doctorDashboard");
-          setUser(data[0]);
-          console.log(data[0]);
+          data.role === "admin" && navigate("/adminDashboard");
+          data.role === "staff" && navigate(`/staffDashboard`);
+          data.role === "doctor" && navigate("/doctorDashboard");
+          setUser(data);
         });
     }
   }, [navigate]);
@@ -79,7 +77,7 @@ const Authentication = () => {
             select
             label="Select role"
             onChange={handleVerifyData}
-            helperText="Please select your currency"
+            helperText="Please select your Role"
             name="role"
             defaultValue="Staff"
             fullWidth

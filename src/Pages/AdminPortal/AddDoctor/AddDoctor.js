@@ -29,13 +29,12 @@ const AddDoctor = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        data.error && alert(data.error);
         if (data.insertedId) {
           setName("");
           setEmail("");
           setId("");
           alert("Doctor added successfully");
-        } else {
-          alert(data.error);
         }
       })
       .catch((error) => {
