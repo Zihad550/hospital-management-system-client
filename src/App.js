@@ -5,6 +5,7 @@ import AddDoctor from "./Pages/AdminPortal/AddDoctor/AddDoctor";
 import AddPatient from "./Pages/AdminPortal/AddPatient/AddPatient";
 import AddStaff from "./Pages/AdminPortal/AddStaff/AddStaff";
 import AdminDashboard from "./Pages/AdminPortal/AdminDashboard/AdminDashboard";
+import AdminHome from "./Pages/AdminPortal/AdminHome/AdminHome";
 import ManageUsers from "./Pages/AdminPortal/ManageUsers/ManageUsers";
 import Authentication from "./Pages/Authentication/Authentication";
 import DoctorDashboard from "./Pages/DoctorPortal/DoctorDashboard/DoctorDashboard";
@@ -20,6 +21,7 @@ function App() {
 
           {/* admin routes */}
           <Route path="/adminDashboard" element={<AdminDashboard />}>
+            <Route path="/adminDashboard" element={<AdminHome />} />
             {/* manage admin, staff and doctor routes */}
             <Route
               path="/adminDashboard/manageAdmins"
