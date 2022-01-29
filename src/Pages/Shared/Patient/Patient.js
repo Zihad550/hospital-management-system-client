@@ -10,12 +10,17 @@ const Patient = ({ patient }) => {
         <CardMedia
           component="img"
           width="200px"
-          height="300px"
+          height="auto"
           image={`data:image/png;base64,${image}`}
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            sx={{ md: { fontSize: "1.5rem" }, xs: { fontSize: "1rem" } }}
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
             Patient name: {name}
           </Typography>
           <Typography gutterBottom variant="subtitle1" component="div">

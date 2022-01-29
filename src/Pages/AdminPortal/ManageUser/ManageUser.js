@@ -39,7 +39,7 @@ const ManageUser = ({ user, setRefresh }) => {
           <CardMedia
             component="img"
             width="100%"
-            height="300px"
+            height="auto"
             image={`data:image/png;base64,${image}`}
             alt="green iguana"
           />

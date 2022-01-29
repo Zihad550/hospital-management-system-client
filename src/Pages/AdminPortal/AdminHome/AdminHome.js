@@ -46,7 +46,8 @@ const AdminHome = () => {
           <Grid
             key={people.id}
             item
-            md={3}
+            lg={3}
+            md={4}
             xs={12}
             sx={{ textAlign: "center" }}
           >
