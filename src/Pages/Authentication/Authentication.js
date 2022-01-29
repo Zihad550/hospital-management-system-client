@@ -1,6 +1,14 @@
-import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  MenuItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import img from "../../images/verify.svg";
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -60,46 +68,67 @@ const Authentication = () => {
     { value: "staff", label: "Staff" },
   ];
   return (
-    <>
-      <Box sx={{ mx: 2 }}>
-        <Typography sx={{ my: 4 }} variant="h3">
-          Please Verify yourself
-        </Typography>
-        <form onSubmit={handleVerify}>
-          <TextField
-            margin="dense"
-            onChange={handleVerifyData}
-            fullWidth
-            type="number"
-            label="Personal Id"
-            name="personId"
-            required
-          />
-          <TextField
-            select
-            label="Select role"
-            onChange={handleVerifyData}
-            helperText="Please select your Role"
-            name="role"
-            defaultValue="Staff"
-            fullWidth
-          >
-            {options.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+    <Container
+      sx={{
+        diaplay: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <Grid
+        container
+        spacing={{ md: 2, xs: 1 }}
+        sx={{ my: "auto", height: "100%" }}
+      >
+        <Grid
+          item
+          md={6}
+          sx={{ my: "auto", display: { md: "flex", xs: "none" } }}
+        >
+          <img src={img} alt="" />
+        </Grid>
+        <Grid item md={6} xs={12} sx={{ my: "auto" }}>
+          <Typography sx={{ my: 4 }} variant="h3">
+            Please Verify yourself
+          </Typography>
+          <form onSubmit={handleVerify}>
+            <TextField
+              margin="dense"
+              onChange={handleVerifyData}
+              fullWidth
+              type="number"
+              label="Personal Id"
+              name="personId"
+              required
+            />
+            <TextField
+              select
+              label="Select role"
+              onChange={handleVerifyData}
+              helperText="Please select your Role"
+              name="role"
+              margin="dense"
+              defaultValue="Staff"
+              fullWidth
+            >
+              {options.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
 
-          <Button type="submit" variant="contained" fullWidth>
-            Verify
-          </Button>
-        </form>
-      </Box>
+            <Button type="submit" variant="contained" fullWidth>
+              Verify
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
       {user?.role === "admin" && navigate("/adminDashboard")}
       {user?.role === "staff" && navigate(`/staffDashboard`)}
       {user?.role === "doctor" && navigate("/doctorDashboard")}
-    </>
+    </Container>
   );
 };
 
