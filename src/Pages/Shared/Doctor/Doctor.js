@@ -5,14 +5,15 @@ const Doctor = ({ doctor }) => {
   const { name, email, image } = doctor;
   return (
     <Grid item md={4} lg={3} xs={12} sm={6}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardMedia
           component="img"
           width="100%"
+          height="300px"
           image={`data:image/png;base64,${image}`}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent sx={{ textAlign: "center", mx: "auto" }}>
           <Typography gutterBottom variant="h5" component="div">
             {name}
           </Typography>

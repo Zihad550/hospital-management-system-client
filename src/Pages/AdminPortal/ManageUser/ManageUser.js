@@ -43,7 +43,7 @@ const ManageUser = ({ user, setRefresh }) => {
             image={`data:image/png;base64,${image}`}
             alt="green iguana"
           />
-          <CardContent>
+          <CardContent sx={{ textAlign: "center" }}>
             <Typography
               gutterBottom
               variant="h5"
