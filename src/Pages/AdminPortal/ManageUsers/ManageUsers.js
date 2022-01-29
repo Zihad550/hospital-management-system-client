@@ -25,7 +25,7 @@ const ManageUsers = () => {
   useEffect(() => {
     setRefresh(false);
     console.log("effect");
-    fetch(`http://localhost:8000/users?role=${role}`)
+    fetch(`https://shielded-meadow-04426.herokuapp.com/users?role=${role}`)
       .then((res) => res.json())
       .then((data) => {
         if (role === "admin") {

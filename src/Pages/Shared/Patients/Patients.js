@@ -6,7 +6,7 @@ const Patients = () => {
   const [patients, setPatients] = useState([]);
   console.log(patients);
   useEffect(() => {
-    fetch("http://localhost:8000/patients")
+    fetch("https://shielded-meadow-04426.herokuapp.com/patients")
       .then((res) => res.json())
       .then((data) => setPatients(data));
   }, []);

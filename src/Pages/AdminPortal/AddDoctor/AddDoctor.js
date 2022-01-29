@@ -23,7 +23,7 @@ const AddDoctor = () => {
     formData.append("role", "doctor");
     formData.append("personId", id);
 
-    fetch("http://localhost:8000/users", {
+    fetch("https://shielded-meadow-04426.herokuapp.com/users", {
       method: "POST",
       body: formData,
     })

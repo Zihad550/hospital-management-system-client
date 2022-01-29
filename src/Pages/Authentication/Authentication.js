@@ -15,7 +15,7 @@ const Authentication = () => {
   const handleVerify = (e) => {
     e.preventDefault();
     fetch(
-      `http://localhost:8000/users/user?id=${data?.personId}&&role=${data?.role}`
+      `https://shielded-meadow-04426.herokuapp.com/users/user?id=${data?.personId}&&role=${data?.role}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +41,9 @@ const Authentication = () => {
 
   useEffect(() => {
     if (id && role) {
-      fetch(`http://localhost:8000/users/user?id=${id}&&role=${role}`)
+      fetch(
+        `https://shielded-meadow-04426.herokuapp.com/users/user?id=${id}&&role=${role}`
+      )
         .then((res) => res.json())
         .then((data) => {
           data.role === "admin" && navigate("/adminDashboard");

@@ -36,7 +36,7 @@ const AddPatient = () => {
     formData.append("image", image);
     formData.append("personId", id);
 
-    fetch("http://localhost:8000/patients", {
+    fetch("https://shielded-meadow-04426.herokuapp.com/patients", {
       method: "POST",
       body: formData,
     })

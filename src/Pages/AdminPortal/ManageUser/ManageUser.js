@@ -18,9 +18,12 @@ const ManageUser = ({ user, setRefresh }) => {
 
   const handleDelete = () => {
     if (window.confirm("Are you sure")) {
-      fetch(`http://localhost:8000/users?role=${role}&&personId=${personId}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://shielded-meadow-04426.herokuapp.com/users?role=${role}&&personId=${personId}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

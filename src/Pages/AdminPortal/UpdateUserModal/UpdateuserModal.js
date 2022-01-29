@@ -43,7 +43,7 @@ export default function BasicModal({ open, setOpen, user, setRefresh }) {
     formData.append("role", role);
     formData.append("personId", id);
 
-    fetch(`http://localhost:8000/users?id=${user._id}`, {
+    fetch(`https://shielded-meadow-04426.herokuapp.com/users?id=${user._id}`, {
       method: "PUT",
       body: formData,
     })
